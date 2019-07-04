@@ -1,0 +1,17 @@
+# MAC OS
+.DS_Store
+
+# Local files
+files
+archive
+tools
+
+# Nextflow
+.nextflow*
+giab_run
+work
+
+# Cromwell
+cromwell-executions
+cromwell-workflow-logs
+cromwell_output

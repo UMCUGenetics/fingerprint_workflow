@@ -1,0 +1,67 @@
+{
+    "MipFingerprint.genome": "/Users/rernst/Development/fingerprint_workflow/files/genome/Homo_sapiens.GRCh37.GATK.illumina.fasta",
+    "MipFingerprint.samples": [
+        {
+            "name": "NA12878K10",
+            "library_id": "AHGYGKAFXX",
+            "r1_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L001_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L002_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L003_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L004_R1_001.fastq.gz"
+            ],
+            "r2_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L001_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L002_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L003_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12878K10_AHGYGKAFXX_S46_L004_R2_001.fastq.gz"
+            ]
+        },
+        {
+            "name": "NA12891D2",
+            "library_id": "AHGYGKAFXX",
+            "r1_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L001_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L002_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L003_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L004_R1_001.fastq.gz"
+            ],
+            "r2_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L001_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L002_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L003_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12891D2_AHGYGKAFXX_S47_L004_R2_001.fastq.gz"
+            ]
+        },
+        {
+            "name": "NA12892E1",
+            "library_id": "AHGYGKAFXX",
+            "r1_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L001_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L002_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L003_R1_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L004_R1_001.fastq.gz"
+            ],
+            "r2_fastqs": [
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L001_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L002_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L003_R2_001.fastq.gz",
+                "/Users/rernst/Development/fingerprint_workflow/files/fastq/NA12892E1_AHGYGKAFXX_S48_L004_R2_001.fastq.gz"
+            ]
+        }
+    ],
+
+    "MipFingerprint.fastqc.fastqc_path": "/Users/rernst/Development/fingerprint_workflow/tools/FastQC/fastqc",
+
+    "MipFingerprint.mips_trim_dedup.mips_repo_path": "/Users/rernst/Development/mips/",
+    "MipFingerprint.mips_trim_dedup.design_file": "/Users/rernst/Development/fingerprint_workflow/files/fingerprint/81_snp_mips_design.txt",
+    "MipFingerprint.mips_trim_dedup.uuid_length": 8,
+    "MipFingerprint.mips_trim_dedup.uuid_read": "R1",
+
+    "MipFingerprint.mem.bwa_path": "/usr/local/bin/bwa",
+
+    "MipFingerprint.UnifiedGenotyper.gatk_path": "/Users/rernst/Development/fingerprint_workflow/tools/GenomeAnalysisTK.jar",
+    "MipFingerprint.UnifiedGenotyper.target_intervals": "/Users/rernst/Development/fingerprint_workflow/files/fingerprint/81SNP_design.vcf",
+    "MipFingerprint.UnifiedGenotyper.dbsnp": "/Users/rernst/Development/fingerprint_workflow/files/fingerprint/81SNP_design.vcf"
+
+}
