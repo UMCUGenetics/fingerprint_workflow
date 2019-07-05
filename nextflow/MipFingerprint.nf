@@ -64,7 +64,7 @@ process fastqc {
 process bwa_mem {
     tag "${sample}_bwa_mem"
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
-    cpus 12
+    cpus 1
     penv 'threaded'
     memory '32 GB'
     time '1h'
@@ -80,8 +80,8 @@ process bwa_mem {
     def bwa_readgroup = "\"@RG\\tID:${sample}_${barcode}\\tSM:${sample}\\tPL:ILLUMINA\\tLB:${sample}\\tPU:${barcode}\""
 
     """
-    $params.bwa mem -t ${task.cpus} -c 100 -M -R $bwa_readgroup $params.genome $r1_fastq $r2_fastq | samtools view -b /dev/stdin | samtools sort -T tmp_sort -O bam /dev/stdin > ${sample}.bam
-    samtools index ${sample}.bam ${sample}.bai
+    $params.bwa mem -t ${task.cpus} -c 100 -M -R $bwa_readgroup $params.genome $r1_fastq $r2_fastq | $params.samtools view -b | $params.samtools sort > ${sample}.bam
+    $params.samtools index ${sample}.bam ${sample}.bai
     """
 }
 
