@@ -27,10 +27,12 @@ Comparison of workflow languages using the DX mip fingerprint pipeline.
 ```bash
 mkdir /install/dir/location
 cd /install/dir/location
+module load Java/1.8.0_60
 curl -s https://get.nextflow.io | bash
 ```
 #### Running fingerprint pipeline
 ```bash
+module load Java/1.8.0_60
 ../tools/nextflow run MipFingerprint.nf --samplesheet samples.tsv --outdir <output_dir_name>
 ```
 
