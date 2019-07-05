@@ -20,6 +20,10 @@ Channel.fromPath( file(params.samplesheet) )
 process mips_trim_dedup {
     tag "${sample}_mips_trim_dedup"
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
+    cpus 1
+    penv 'threaded'
+    memory '10 GB'
+    time '1h'
 
     input:
     set val(sample), file(r1_fastqs: "*"), file(r2_fastqs: "*") from samples_R1_R2_fastq
@@ -32,13 +36,17 @@ process mips_trim_dedup {
     def r2_args = r2_fastqs.collect{ "$it" }.join(" ")
 
     """
-    python /Users/rernst/Development/mips/mips_trim_dedup.py -d $params.design_file -r1 $r1_args -r2 $r2_args -l $params.uuid_length -ur $params.uuid_read > output.log 2> output.err
+    python $params.mips_trim_dedup -d $params.mip_design_file -r1 $r1_args -r2 $r2_args -l $params.mip_uuid_length -ur $params.mip_uuid_read > output.log 2> output.err
     """
 }
 
 process fastqc {
     tag "${sample}_fastqc"
     publishDir "$params.outdir/$sample/fastQC", mode: 'copy'
+    cpus 1
+    penv 'threaded'
+    memory '8 GB'
+    time '1h'
 
     input:
     set val(sample), file(fastq: "*") from samples_all_fastq
@@ -48,7 +56,7 @@ process fastqc {
 
     script:
     """
-    /Users/rernst/Development/fingerprint_workflow/tools/FastQC/fastqc --noextract -t 1  $fastq
+    $params.fastqc --noextract -t ${task.cpus} $fastq
     """
 
 }
@@ -56,6 +64,10 @@ process fastqc {
 process bwa_mem {
     tag "${sample}_bwa_mem"
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
+    cpus 12
+    penv 'threaded'
+    memory '32 GB'
+    time '1h'
 
     input:
     set val(sample), file(r1_fastq), file(r2_fastq) from mips_trim_dedup_out
@@ -68,7 +80,7 @@ process bwa_mem {
     def bwa_readgroup = "\"@RG\\tID:${sample}_${barcode}\\tSM:${sample}\\tPL:ILLUMINA\\tLB:${sample}\\tPU:${barcode}\""
 
     """
-    bwa mem -t 1 -c 100 -M -R $bwa_readgroup $params.genome $r1_fastq $r2_fastq | samtools view -b | samtools sort > ${sample}.bam
+    $params.bwa mem -t ${task.cpus} -c 100 -M -R $bwa_readgroup $params.genome $r1_fastq $r2_fastq | samtools view -b | samtools sort > ${sample}.bam
     samtools index ${sample}.bam ${sample}.bai
     """
 }
@@ -76,6 +88,10 @@ process bwa_mem {
 process gatk_UnifiedGenotyper {
     tag "${sample}_gatk_UG"
     publishDir "$params.outdir/fingerprint", mode: 'copy'
+    cpus 2
+    penv 'threaded'
+    memory '10 GB'
+    time '1h'
 
     input:
     set val(sample), file(input_bam), file(input_bai) from bwa_mem_out
@@ -85,7 +101,7 @@ process gatk_UnifiedGenotyper {
 
     script:
     """
-    java -jar /Users/rernst/Development/fingerprint_workflow/tools/GenomeAnalysisTK.jar -T UnifiedGenotyper --reference_sequence $params.genome --intervals $params.target_intervals --dbsnp $params.dbsnp --input_file $input_bam --out ${sample}.vcf
+    java -jar $params.gatk -T UnifiedGenotyper --reference_sequence $params.genome --intervals $params.fingerprint_target --dbsnp $params.fingerprint_target --input_file $input_bam --out ${sample}.vcf
     """
 
 }
