@@ -22,7 +22,7 @@ process mips_trim_dedup {
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
     cpus 1
     penv 'threaded'
-    memory '10 GB'
+    memory '1 GB'
     time '1h'
 
     input:
@@ -45,7 +45,7 @@ process fastqc {
     publishDir "$params.outdir/$sample/fastQC", mode: 'copy'
     cpus 1
     penv 'threaded'
-    memory '8 GB'
+    memory '1 GB'
     time '1h'
 
     input:
@@ -66,7 +66,7 @@ process bwa_mem {
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
     cpus 1
     penv 'threaded'
-    memory '32 GB'
+    memory '10 GB'
     time '1h'
 
     input:
@@ -90,7 +90,7 @@ process gatk_UnifiedGenotyper {
     publishDir "$params.outdir/fingerprint", mode: 'copy'
     cpus 2
     penv 'threaded'
-    memory '10 GB'
+    memory '5 GB'
     time '1h'
 
     input:
