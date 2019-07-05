@@ -101,6 +101,7 @@ process gatk_UnifiedGenotyper {
 
     script:
     """
+    module load Java/1.8.0_60
     java -jar $params.gatk -T UnifiedGenotyper --reference_sequence $params.genome --intervals $params.fingerprint_target --dbsnp $params.fingerprint_target --input_file $input_bam --out ${sample}.vcf
     """
 
