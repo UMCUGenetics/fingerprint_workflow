@@ -1,6 +1,10 @@
 # Fingerprint workflow
 Comparison of workflow languages using the DX mip fingerprint pipeline.
 
+- https://www.biocentric.nl/tag/framework/
+- https://www.biocentric.nl/biocentric/bioinformatics-frameworks-part-4-nextflow/
+- https://www.biocentric.nl/biocentric/bioinformatics-frameworks-part-5-cromwell-and-wdl/
+
 #### Pipeline components:
 - FastQC
 - MIPS trim dedup
