@@ -14,6 +14,10 @@ Comparison of workflow languages using the DX mip fingerprint pipeline.
 ## Nextflow
 - Website: https://www.nextflow.io/
 - Docs: https://www.nextflow.io/docs/latest/index.html
+- Useful resources:
+  - https://github.com/nextflow-io/patterns
+  - https://github.com/oliverSI/GATK4_Best_Practice
+  - https://github.com/SciLifeLab/Sarek
 
 #### Pros
 - SGE / SLURM and cloud support.
