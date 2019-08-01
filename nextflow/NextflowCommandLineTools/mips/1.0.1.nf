@@ -7,10 +7,10 @@ process mips_trim_dedup {
     time '1h'
 
     input:
-    set val(sample), file(r1_fastqs: "*"), file(r2_fastqs: "*") from samples_R1_R2_fastq
+    set val(sample), file(r1_fastqs: "*"), file(r2_fastqs: "*")
 
     output:
-    set val(sample), file('*_LMergedTrimmedDedup_R1_*.fastq.gz'), file('*_LMergedTrimmedDedup_R2_*.fastq.gz') into mips_trim_dedup_out
+    set val(sample), file('*_LMergedTrimmedDedup_R1_*.fastq.gz'), file('*_LMergedTrimmedDedup_R2_*.fastq.gz')
 
     script:
     def r1_args = r1_fastqs.collect{ "$it" }.join(" ")

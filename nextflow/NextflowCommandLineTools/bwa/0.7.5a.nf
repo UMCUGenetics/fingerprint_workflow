@@ -7,10 +7,10 @@ process mem {
     time '1h'
 
     input:
-    set val(sample), file(r1_fastq), file(r2_fastq) from mips_trim_dedup_out
+    set val(sample), file(r1_fastq), file(r2_fastq)
 
     output:
-    set val(sample), file("${sample}.bam"), file("${sample}.bai") into bwa_mem_out
+    set val(sample), file("${sample}.bam"), file("${sample}.bai")
 
     script:
     def barcode = r1_fastq.getName().split('_')[1]

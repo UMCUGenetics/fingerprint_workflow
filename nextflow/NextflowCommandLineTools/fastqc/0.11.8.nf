@@ -7,10 +7,10 @@ process fastqc {
     time '1h'
 
     input:
-    set val(sample), file(fastq: "*") from samples_all_fastq
+    set val(sample), file(fastq: "*")
 
     output:
-    file '*_fastqc.*' into fastqc_out
+    file '*_fastqc.*'
 
     script:
     """

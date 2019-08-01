@@ -7,10 +7,10 @@ process UnifiedGenotyper {
     time '1h'
 
     input:
-    set val(sample), file(input_bam), file(input_bai) from bwa_mem_out
+    set val(sample), file(input_bam), file(input_bai)
 
     output:
-    set val(sample), file("${sample}.vcf") into gatk_ug_out
+    set val(sample), file("${sample}.vcf")
 
     script:
     """
