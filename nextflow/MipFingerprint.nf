@@ -1,10 +1,10 @@
 #!/usr/bin/env nextflow
 nextflow.preview.dsl=2
 
-include mips_trim_dedup from 'NextflowCommandLineTools/mips/1.0.1.nf'
-include fastqc from 'NextflowCommandLineTools/fastqc/0.11.8.nf'
-include mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf'
-include UnifiedGenotyper from 'NextflowCommandLineTools/gatk/3.8-1-0-gf15c1c3ef.nf'
+include mips_trim_dedup from 'NextflowCommandLineTools/mips/1.0.1.nf' params(params)
+include fastqc from 'NextflowCommandLineTools/fastqc/0.11.8.nf' params(params)
+include mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf' params(params)
+include UnifiedGenotyper from 'NextflowCommandLineTools/gatk/3.8-1-0-gf15c1c3ef.nf' params(params)
 
 params.samplesheet
 params.outdir
