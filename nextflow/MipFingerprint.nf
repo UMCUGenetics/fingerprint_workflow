@@ -3,8 +3,8 @@ nextflow.preview.dsl=2
 
 include mips_trim_dedup from 'NextflowCommandLineTools/mips/1.0.1.nf' params(params)
 include fastqc from 'NextflowCommandLineTools/fastqc/0.11.8.nf' params(params)
-include mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf' params(params)
-include UnifiedGenotyper from 'NextflowCommandLineTools/gatk/3.8-1-0-gf15c1c3ef.nf' params(params)
+include mem as bwa_mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf' params(params)
+include UnifiedGenotyper as gatk_UnifiedGenotyper from 'NextflowCommandLineTools/gatk/3.8-1-0-gf15c1c3ef.nf' params(params)
 
 params.samplesheet
 params.outdir
@@ -25,5 +25,5 @@ Channel.fromPath( file(params.samplesheet) )
 
 mips_trim_dedup(samples_R1_R2_fastq)
 fastqc(samples_all_fastq)
-mem(mips_trim_dedup.out)
-UnifiedGenotyper(bwa_mem.out)
+bwa_mem(mips_trim_dedup.out)
+gatk_UnifiedGenotyper(bwa_mem.out)
