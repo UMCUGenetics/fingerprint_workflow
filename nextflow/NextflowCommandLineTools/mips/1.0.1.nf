@@ -22,6 +22,6 @@ process mips_trim_dedup {
     def r2_args = r2_fastqs.collect{ "$it" }.join(" ")
 
     """
-    python $params.mips_trim_dedup -d $params.design_file -r1 $r1_args -r2 $r2_args -l $params.mip_uuid_length -ur $params.mip_uuid_read > output.log 2> output.err
+    python $params.mips_trim_dedup -d $params.design_file -r1 $r1_args -r2 $r2_args -l $params.uuid_length -ur $params.uuid_read > output.log 2> output.err
     """
 }

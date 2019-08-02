@@ -3,9 +3,9 @@ nextflow.preview.dsl=2
 
 include mips_trim_dedup from 'NextflowCommandLineTools/mips/1.0.1.nf' params(
     mips_trim_dedup: params.mips_trim_dedup,
-    design_file: params.mips_design_file,
-    uuid_length: params.mips_uuid_length,
-    uuid_read: params.mips_uuid_read,
+    design_file: params.mip_design_file,
+    uuid_length: params.mip_uuid_length,
+    uuid_read: params.mip_uuid_read,
     )
 include fastqc from 'NextflowCommandLineTools/fastqc/0.11.8.nf' params(params)
 include mem as bwa_mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf' params(params)
@@ -15,7 +15,7 @@ include UnifiedGenotyper as gatk_UnifiedGenotyper from 'NextflowCommandLineTools
     genome: params.genome,
     intervals: params.fingerprint_target,
     dbsnp: params.fingerprint_target,
-    output_mode = 'EMIT_ALL_SITES'
+    output_mode: 'EMIT_ALL_SITES'
     )
 
 params.samplesheet
