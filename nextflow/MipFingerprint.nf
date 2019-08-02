@@ -14,7 +14,7 @@ include UnifiedGenotyper as gatk_UnifiedGenotyper from 'NextflowCommandLineTools
     gatk: params.gatk,
     genome: params.genome,
     intervals: params.fingerprint_target,
-    dbsnp: params.fingerprint_target
+    dbsnp: params.fingerprint_target,
     output_mode = 'EMIT_ALL_SITES'
     )
 
