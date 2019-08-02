@@ -1,6 +1,12 @@
+params.process_outdir = 'UnifiedGenotyper'
+params.gatk
+params.genome
+params.intervals = ''
+params.dbsnp = ''
+
 process UnifiedGenotyper {
     tag "${sample}_gatk_UG"
-    publishDir "$params.outdir/fingerprint", mode: 'copy'
+    publishDir "$params.outdir/$params.process_outdir", mode: 'copy'
     cpus 2
     penv 'threaded'
     memory '5 GB'
@@ -13,9 +19,10 @@ process UnifiedGenotyper {
     set val(sample), file("${sample}.vcf")
 
     script:
+    def intervals = params.intervals ? "--intervals $params.intervals" : ''
+    def dbsnp = params.dbsnp ? "--dbsnp $params.dbsnp" : ''
     """
     module load Java/1.8.0_60
-    java -jar $params.gatk -T UnifiedGenotyper --reference_sequence $params.genome --intervals $params.fingerprint_target --dbsnp $params.fingerprint_target --input_file $input_bam --out ${sample}.vcf
+    java -jar $params.gatk -T UnifiedGenotyper --reference_sequence $params.genome --dbsnp $params.dbsnp --input_file $input_bam --out ${sample}.vcf $intervals
     """
-
 }
