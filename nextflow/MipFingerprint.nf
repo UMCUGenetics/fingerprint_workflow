@@ -2,10 +2,10 @@
 nextflow.preview.dsl=2
 
 include mips_trim_dedup from 'NextflowCommandLineTools/mips/1.0.1.nf' params(
-    params.mips_trim_dedup: params.mips_trim_dedup,
-    params.design_file: params.mips_design_file,
-    params.uuid_length: params.mips_uuid_length,
-    params.uuid_read: params.mips_uuid_read,
+    mips_trim_dedup: params.mips_trim_dedup,
+    design_file: params.mips_design_file,
+    uuid_length: params.mips_uuid_length,
+    uuid_read: params.mips_uuid_read,
     )
 include fastqc from 'NextflowCommandLineTools/fastqc/0.11.8.nf' params(params)
 include mem as bwa_mem from 'NextflowCommandLineTools/bwa/0.7.5a.nf' params(params)
