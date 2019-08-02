@@ -1,3 +1,7 @@
+params.bwa
+params.samtools
+params.genome
+
 process mem {
     tag "${sample}_bwa_mem"
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'

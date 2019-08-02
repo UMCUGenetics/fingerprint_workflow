@@ -1,3 +1,5 @@
+params.fastqc
+
 process fastqc {
     tag "${sample}_fastqc"
     publishDir "$params.outdir/$sample/fastQC", mode: 'copy'

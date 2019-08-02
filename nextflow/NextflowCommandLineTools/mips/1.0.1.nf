@@ -1,3 +1,8 @@
+params.mips_trim_dedup
+params.design_file
+params.uuid_length
+params.uuid_read
+
 process mips_trim_dedup {
     tag "${sample}_mips_trim_dedup"
     publishDir "$params.outdir/$sample/mapping", mode: 'copy'
@@ -17,6 +22,6 @@ process mips_trim_dedup {
     def r2_args = r2_fastqs.collect{ "$it" }.join(" ")
 
     """
-    python $params.mips_trim_dedup -d $params.mip_design_file -r1 $r1_args -r2 $r2_args -l $params.mip_uuid_length -ur $params.mip_uuid_read > output.log 2> output.err
+    python $params.mips_trim_dedup -d $params.design_file -r1 $r1_args -r2 $r2_args -l $params.mip_uuid_length -ur $params.mip_uuid_read > output.log 2> output.err
     """
 }
